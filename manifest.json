@@ -12,8 +12,14 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "host_permissions": ["*://*.youtube.com/*"],
+  "permissions": ["tabs"],
   "background": {
-    "service_worker": "src/background/index.ts"
-  }
+    "service_worker": "src/background/index.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/content/index.js"]
+    }
+  ]
 }
