@@ -1,3 +1,3 @@
 export const Popup = () => {
-  return <h1>YT AD Void</h1>;
+  return <h1>AD Zero</h1>;
 };

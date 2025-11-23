@@ -1,7 +1,3 @@
-# Chrome YT AD Void
+# Chrome AD Zero
 
-- React
-- Vite
-- CRXJS
-- TailwindCSS
-- Prettier
+- YouTube

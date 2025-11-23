@@ -27,8 +27,8 @@ jobs:
       - run: |
           VERSION=${GITHUB_REF_NAME}
           cd dist
-          zip -r "../chrome-yt-ad-void-${VERSION}.zip" .
+          zip -r "../chrome-ad-zero-${VERSION}.zip" .
 
       - uses: softprops/action-gh-release@v2
         with:
-          files: chrome-yt-ad-void-${{ github.ref_name }}.zip
+          files: chrome-ad-zero-${{ github.ref_name }}.zip

@@ -1,6 +1,6 @@
 {
-  "name": "chrome-yt-ad-void",
-  "version": "1.0.0",
+  "name": "chrome-ad-zero",
+  "version": "0.0.0",
   "main": "popup.js",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
