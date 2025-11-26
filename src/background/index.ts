@@ -21,6 +21,11 @@ chrome.runtime.onMessage.addListener(
           console.error('Failed to unmute tab:', err);
         });
         break;
+      case 'RELOAD_TAB':
+        chrome.tabs.reload(tabId).catch((err) => {
+          console.error('Failed to reload tab:', err);
+        });
+        break;
     }
   },
 );

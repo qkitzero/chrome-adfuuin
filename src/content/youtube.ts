@@ -3,8 +3,20 @@ const checkForAds = (() => {
   const VIDEO_SELECTOR = 'video';
   const MUTE_MESSAGE_TYPE = 'MUTE_TAB';
   const UNMUTE_MESSAGE_TYPE = 'UNMUTE_TAB';
+  const RELOAD_TAB_MESSAGE_TYPE = 'RELOAD_TAB';
+  const RELOAD_DELAY_MS = 10000;
 
   let isMutedByExtension = false;
+
+  let adStartTime: any = null;
+  let reloadTimer: any = null;
+
+  const clearReloadTimer = () => {
+    if (reloadTimer !== null) {
+      clearTimeout(reloadTimer);
+      reloadTimer = null;
+    }
+  };
 
   return () => {
     const adShowing = document.querySelector(AD_SELECTOR);
@@ -15,10 +27,24 @@ const checkForAds = (() => {
         chrome.runtime.sendMessage({ type: MUTE_MESSAGE_TYPE });
         isMutedByExtension = true;
       }
+
+      if (adStartTime === null) {
+        adStartTime = Date.now();
+
+        reloadTimer = setTimeout(() => {
+          chrome.runtime.sendMessage({ type: RELOAD_TAB_MESSAGE_TYPE });
+          clearReloadTimer();
+        }, RELOAD_DELAY_MS);
+      }
     } else {
       if (isMutedByExtension) {
         chrome.runtime.sendMessage({ type: UNMUTE_MESSAGE_TYPE });
         isMutedByExtension = false;
+      }
+
+      if (adStartTime !== null) {
+        adStartTime = null;
+        clearReloadTimer();
       }
     }
   };
