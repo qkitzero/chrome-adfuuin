@@ -8,8 +8,8 @@ const checkForAds = (() => {
 
   let isMutedByExtension = false;
 
-  let adStartTime: any = null;
-  let reloadTimer: any = null;
+  let adStartTime: number | null = null;
+  let reloadTimer: number | null = null;
 
   const clearReloadTimer = () => {
     if (reloadTimer !== null) {
