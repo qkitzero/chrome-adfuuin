@@ -24,6 +24,10 @@
     {
       "matches": ["*://www.twitch.tv/*"],
       "js": ["src/content/twitch.js"]
+    },
+    {
+      "matches": ["*://open.spotify.com/*"],
+      "js": ["src/content/spotify.js"]
     }
   ]
 }
